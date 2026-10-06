@@ -1,11 +1,13 @@
-/* RESET */
+/* =====================================================
+   GLOBAL RESET & BASE STYLES
+===================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ✅ FULL HEIGHT FIX */
 html, body {
     height: 100%;
 }
@@ -13,18 +15,34 @@ html, body {
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f4f4f4;
+    color: #111;
 
-    /* ✅ KEY FIX */
     display: flex;
     flex-direction: column;
 }
 
-/* ✅ MAIN CONTENT WRAPPER */
-.main-content {
+
+/* =====================================================
+   PAGE STRUCTURE
+===================================================== */
+
+main {
     flex: 1;
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+    padding: 40px 20px;
 }
 
-/* HEADER */
+section {
+    margin-bottom: 50px;
+}
+
+
+/* =====================================================
+   HEADER / NAVIGATION
+===================================================== */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -33,18 +51,18 @@ header {
     background: #0d1b2a;
 }
 
-/* LEFT SIDE */
+
+/* Logo Area */
+
 .left-header {
     display: flex;
     align-items: center;
 }
 
-/* LOGO */
 .logo {
     width: 60px;
 }
 
-/* BRAND TEXT */
 .brand-text {
     margin-left: 12px;
     font-size: 22px;
@@ -53,76 +71,261 @@ header {
     white-space: nowrap;
 }
 
-/* NAV */
+
+/* Navigation Links */
+
 nav a {
+    position: relative;
     color: white;
     text-decoration: none;
     margin-left: 30px;
-    transition: opacity 0.2s;
+    font-weight: 600;
+
+    transition: color 0.3s ease;
 }
+
+
+/* Animated underline */
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #B200ED;
+
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
 
 nav a:hover {
-    opacity: 0.7;
+    color: #B200ED;
 }
 
-/* HERO */
-.hero {
+
+nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+
+/* =====================================================
+   HERO SECTIONS
+===================================================== */
+
+.hero,
+.about-hero,
+.services-hero {
     text-align: center;
-    padding: 100px 20px;
+    padding: 80px 20px;
 }
 
-/* TITLE */
-.hero h2 {
+
+.hero h2,
+.services-hero h1,
+.about-hero h1 {
     font-size: 48px;
     margin-bottom: 20px;
     line-height: 1.2;
 }
 
-/* TEXT */
-.hero p {
-    width: 600px;
-    max-width: 90%;
-    margin: 0 auto;
+
+.hero p,
+.services-hero p,
+.about-hero p {
+    max-width: 800px;
+    margin: auto;
     font-size: 18px;
     color: #555;
 }
 
-/* BUTTON */
-button {
-    margin-top: 40px;
-    padding: 15px 40px;
-    background: #0077ff;
+
+/* =====================================================
+   HEADINGS
+===================================================== */
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+
+    border-left: 4px solid #B200ED;
+    padding-left: 10px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+button,
+.contact-button,
+.cta-button,
+.consultation-button {
+
+    display: inline-block;
+
+    margin-top: 20px;
+    padding: 14px 30px;
+
+    background: #B200ED;
     color: white;
+
     border: none;
     border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    text-decoration: none;
     cursor: pointer;
-    font-size: 18px;
+
+    transition: 
+        background 0.3s ease,
+        transform 0.3s ease;
 }
 
-button:hover {
-    background: #005fcc;
+
+button:hover,
+.contact-button:hover,
+.cta-button:hover,
+.consultation-button:hover {
+
+    background: #6F2DA8;
+    transform: translateY(-3px);
 }
 
-/* FOOTER */
-footer {
+
+/* =====================================================
+   SERVICE PAGE
+===================================================== */
+
+.services-container,
+.why-us,
+.services-cta {
+
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+
+.services-container h2,
+.why-us h2,
+.services-cta h2 {
+
     text-align: center;
+    margin-bottom: 40px;
+}
+
+
+/* Service Cards */
+
+.service-card {
+
+    background: white;
+
+    padding: 30px;
+    margin-bottom: 25px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.08);
+
+    transition: transform 0.3s ease;
+}
+
+
+.service-card:hover {
+
+    transform: translateY(-5px);
+
+}
+
+
+.service-card h3 {
+
+    color: #6F2DA8;
+    margin-bottom: 15px;
+
+}
+
+
+.service-card li {
+
+    margin-bottom: 8px;
+
+}
+
+
+ul,
+ol {
+
+    margin-left: 20px;
+
+}
+
+
+/* =====================================================
+   CONTACT PAGE FORM
+===================================================== */
+
+.contact-form {
+
+    max-width: 600px;
+
+    margin: 40px auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+.contact-form label {
+
+    font-weight: 600;
+
+}
+
+
+.contact-form input,
+.contact-form textarea {
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    font-size: 1rem;
+
+}
+
+
+.contact-form textarea {
+
+    resize: vertical;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    text-align: center;
+
     padding: 20px;
+
     background: #0d1b2a;
+
     color: white;
-}
 
-/* Pushes Footer down */
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-/* This pushes footer down */
-main {
-  flex: 1;
 }
